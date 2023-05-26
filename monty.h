@@ -1,6 +1,7 @@
 #ifndef __MONTY_H__
 #define __MONTY_H__
 
+
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -37,50 +38,19 @@ typedef struct stack_s
 typedef struct instruction_s
 {
         char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+        int (*f)(stack_t **stack, char *word2, unsigned int line_number);
 } instruction_t;
 
+extern char line[1024];
+#define DELIM " ,\n\t\r"
+int parse_to_func(stack_t **stack, char *word1, char *word2, unsigned int line_no);
 
-/**
-* struct help - argument for the current opcode
-* @data_struct: stack mode, stack (default) and queue
-* @arg: the arguments of the string
-*
-* Description: global structure used to pass data around the functions easily
-*/
-typedef struct help
-{
-	int data_struct;
-	char *arg;
-} help;
-help global;
+/* opcode functions */
+int push(stack_t **stack, char *word2, unsigned int line_number);
+int pall(stack_t **stack, char *word2, unsigned int line_number);
 
+/* helper functions */
+/*ssize_t my_getline(char **lineptr, size_t *n, FILE *stream);*/
+stack_t *init_stack(stack_t **stack);
 
-#define OPCODES { \
-	{"push", push},\
-	{"pall", pall},\
-	{NULL, NULL} \
-}
-
-#define DELIM " \n\t\a\b"
-extern int status;
-
-/* opcodes */
-void push(stack_t **stack, unsigned int line_cnt);
-void pall(stack_t **stack, unsigned int line_cnt);
-void pint(stack_t **stack, unsigned int line_cnt);
-void swap(stack_t **stack, unsigned int line_cnt);
-void pop(stack_t **stack, unsigned int line_cnt);
-void nop(stack_t **stack, unsigned int line_cnt);
-
-/* helper_functions */
-void run_opcode(stack_t **stack, char *str, unsigned int line_no);
-void free_stack(stack_t *stack);
-stack_t *add_node(stack_t **stack, const int n);
-stack_t *queue_node(stack_t **stack, const int n);
-int is_digit(char *string);
-int isnumber(char *str);
-size_t print_stack(const stack_t *stack);
-ssize_t my_getline(char **lineptr, size_t *n, FILE *stream);
-
-#endif
+#endif /* __MONTY_H__ */
