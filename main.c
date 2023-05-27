@@ -12,22 +12,24 @@ char *line[1024];
  */
 int main(int ac, char *av[])
 {
-	stack_t *newstack = NULL, *stack;
+	stack_t *stack = NULL;
 	FILE *fd;
 	char buffer[1024];
 	unsigned int line_no = 0;
+	int exit_code;
 
 	if (ac != 2)
 	{
 		fprintf(stdout, "USAGE: monty file\n");
 		return (EXIT_FAILURE);
 	}
+	check_file_PATH(av[1]);
 
-	stack = init_stack(&newstack);
+	init_stack(&stack);
 	fd = fopen(av[1], "r");
 	if (fd == NULL)
 	{
-		fprintf(stderr, "USAGE: monty script_fd\n");
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		return (EXIT_FAILURE);
 	}
 
@@ -38,11 +40,11 @@ int main(int ac, char *av[])
 		if (line[0] == NULL || line[0][0] == '#')
 			continue;
 		line[1] = strtok(NULL, DELIM);
-		parse_to_func(&stack, line_no);
+		exit_code = parse_to_func(&stack, line_no);
 	}
 
-	free(stack);
 	fclose(fd);
+	free_stack(stack);
 
-	return (EXIT_SUCCESS);
+	return (exit_code);
 }

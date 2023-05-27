@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 
+#define DELIM " ,\n\t\r"
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -42,15 +43,18 @@ typedef struct instruction_s
 } instruction_t;
 
 extern char *line[1024];
-#define DELIM " ,\n\t\r"
-int parse_to_func(stack_t **stack, unsigned int line_no);
+
 
 /* opcode functions */
 int push(stack_t **stack, unsigned int line_number);
 int pall(stack_t **stack, unsigned int line_number);
 
 /* helper functions */
-/*ssize_t my_getline(char **lineptr, size_t *n, FILE *stream);*/
-stack_t *init_stack(stack_t **stack);
+int parse_to_func(stack_t **stack, unsigned int line_no);
+void init_stack(stack_t **stack);
+void free_stack(stack_t *stack);
+void check_file_PATH(char *path);
+
+
 
 #endif /* __MONTY_H__ */

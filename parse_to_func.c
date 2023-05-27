@@ -28,6 +28,6 @@ int parse_to_func(stack_t **stack, unsigned int line_no)
 		}
 		i++;
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_no, line[1]);
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_no, line[1]);
 	return (EXIT_FAILURE);
 }
