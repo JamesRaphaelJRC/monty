@@ -12,7 +12,7 @@
  */
 int parse_to_func(stack_t **stack, unsigned int line_no)
 {
-	int i = 0;
+	int i = 0, status;
 	instruction_t op_funcs[] = {
 		{"push", push},
 		{"pall", pall},
@@ -23,11 +23,11 @@ int parse_to_func(stack_t **stack, unsigned int line_no)
 	{
 		if (strcmp(op_funcs[i].opcode, line[0]) == 0)
 		{
-			op_funcs[i].f(stack, line_no);
-			return (EXIT_SUCCESS);
+			status = op_funcs[i].f(stack, line_no);
+			return (status);
 		}
 		i++;
 	}
-	fprintf(stderr, "L%u: unknown instruction %s\n", line_no, line[1]);
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_no, line[0]);
 	return (EXIT_FAILURE);
 }
