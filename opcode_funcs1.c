@@ -67,6 +67,8 @@ int pall(stack_t **stack, unsigned int line_number)
  * pint - Prints the value at the top of the stack
  * @stack: A pointer to the top of the stack
  * @line_no: The current line number.
+ *
+ * Return: EXIT_SUCCESS on success
  */
 int pint(stack_t **stack, unsigned int line_no)
 {
@@ -76,6 +78,32 @@ int pint(stack_t **stack, unsigned int line_no)
 		 exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->next->n);
+
+	return (EXIT_SUCCESS);
+}
+
+
+/**
+ * pop - Removes the top element of a stack_t linked list
+ * @stack: A pointer to the top node of the list
+ * @line_no: The current line_number
+ *
+ * Return: EXIT_SUCCESS on success.
+ */
+int pop(stack_t **stack, unsigned int line_no)
+{
+	stack_t *tmp;
+
+	if ((*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_no);
+		exit(EXIT_FAILURE);
+	}
+	tmp = (*stack)->next;
+	tmp->prev = NULL;
+	(*stack)->next = NULL;
+	free(*stack);
+	*stack = tmp;
 
 	return (EXIT_SUCCESS);
 }
