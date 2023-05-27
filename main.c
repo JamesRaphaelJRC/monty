@@ -47,5 +47,5 @@ int main(int ac, char *av[])
 	fclose(fd);
 	free_stack(stack);
 
-	exit(exit_code);
+	return (exit_code);
 }

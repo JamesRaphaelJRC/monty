@@ -16,6 +16,7 @@ int parse_to_func(stack_t **stack, unsigned int line_no)
 	instruction_t op_funcs[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 
