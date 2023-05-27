@@ -13,17 +13,17 @@
  */
 stack_t *init_stack(stack_t **stack)
 {
-        stack_t *s; 
+	stack_t *s;
 
-        s = malloc(sizeof(stack_t));
-        if (s == NULL)
-                return (NULL);
+	s = malloc(sizeof(stack_t));
+	if (s == NULL)
+		return (NULL);
 
-        s->n = 0;
-        s->prev = NULL;
-        s->next = NULL;
+	s->n = 0;
+	s->prev = NULL;
+	s->next = NULL;
 
-        *stack = s;
+	*stack = s;
 
-        return (*stack);
+	return (*stack);
 }

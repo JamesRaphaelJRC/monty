@@ -21,9 +21,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 
@@ -37,17 +37,17 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        int (*f)(stack_t **stack, char *word2, unsigned int line_number);
+	char *opcode;
+	int (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern char line[1024];
+extern char *line[1024];
 #define DELIM " ,\n\t\r"
-int parse_to_func(stack_t **stack, char *word1, char *word2, unsigned int line_no);
+int parse_to_func(stack_t **stack, unsigned int line_no);
 
 /* opcode functions */
-int push(stack_t **stack, char *word2, unsigned int line_number);
-int pall(stack_t **stack, char *word2, unsigned int line_number);
+int push(stack_t **stack, unsigned int line_number);
+int pall(stack_t **stack, unsigned int line_number);
 
 /* helper functions */
 /*ssize_t my_getline(char **lineptr, size_t *n, FILE *stream);*/
