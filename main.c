@@ -21,7 +21,7 @@ int main(int ac, char *av[])
 	if (ac != 2)
 	{
 		fprintf(stdout, "USAGE: monty file\n");
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	check_file_PATH(av[1]);
 
@@ -30,7 +30,8 @@ int main(int ac, char *av[])
 	if (fd == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
-		return (EXIT_FAILURE);
+		free_stack(stack);
+		exit(EXIT_FAILURE);
 	}
 
 	while (fgets(buffer, sizeof(buffer), fd) != NULL)
@@ -46,5 +47,5 @@ int main(int ac, char *av[])
 	fclose(fd);
 	free_stack(stack);
 
-	return (exit_code);
+	exit(exit_code);
 }
