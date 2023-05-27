@@ -25,7 +25,7 @@ int push(stack_t **stack, unsigned int line_number)
 	if (line[1] == NULL || (atoi(line[1]) == 0))
 	{
 		fprintf(stdout, "L%u: usage: push integer\n", line_number);
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	newnode->n = atoi(line[1]);
