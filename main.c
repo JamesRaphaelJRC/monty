@@ -40,7 +40,7 @@ int main(int ac, char *av[])
 		line[0] = strtok(buffer, DELIM);
 		if (line[0] == NULL || line[0][0] == '#')
 		{
-			line[0] = NULL;
+			exit_code = nop(&stack, line_no);
 			continue;
 		}
 		line[1] = strtok(NULL, DELIM);
