@@ -1,4 +1,4 @@
-#include "monrty.h"
+#include "monty.h"
 #include <stdlib.h>
 
 
@@ -33,4 +33,3 @@ int mod(stack_t **stack, unsigned int line_no)
 
 	return (status);
 }
-                                                                                                                                                                            166,1         Bot
