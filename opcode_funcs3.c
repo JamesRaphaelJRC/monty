@@ -48,7 +48,7 @@ int pchar(stack_t **stack, unsigned int line_no)
 {
 	if ((*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%u: can't pchar, empty stack\n", line_no);
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_no);
 		 exit(EXIT_FAILURE);
 	}
 
