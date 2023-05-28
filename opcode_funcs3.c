@@ -104,7 +104,7 @@ int rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *last, *tmp;
 
-	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+	if ((*stack)->next == NULL || *stack == NULL || (*stack)->next->next == NULL)
 		exit(EXIT_FAILURE);
 
 	last = tmp = (*stack)->next;
