@@ -1,6 +1,8 @@
 #include "monty.h"
 #include <stdlib.h>
 
+int mod(stack_t **stack, unsigned int line_no);
+int pchar(stack_t **stack, unsigned int line_no);
 
 /**
  * mod -computes the rest of the division of the second top element of the
@@ -32,4 +34,30 @@ int mod(stack_t **stack, unsigned int line_no)
 	status = pop(stack, line_no);
 
 	return (status);
+}
+
+
+/**
+ * pchar - Prints the char at the top of the stack
+ * @stack: A pointer to the top of the stack
+ * @line_no: The current line number.
+ *
+ * Return: EXIT_SUCCESS on success
+ */
+int pchar(stack_t **stack, unsigned int line_no)
+{
+	if ((*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't pchar, empty stack\n", line_no);
+		 exit(EXIT_FAILURE);
+	}
+
+	if ((*stack)->next->n < 0 || (*stack)->next->n > 127)
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_no);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", (*stack)->next->n);
+
+	return (EXIT_SUCCESS);
 }

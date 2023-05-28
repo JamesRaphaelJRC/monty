@@ -25,6 +25,7 @@ int parse_to_func(stack_t **stack, unsigned int line_no)
 		{"div", divi},
 		{"mul", mul},
 		{"mod", mod},
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 

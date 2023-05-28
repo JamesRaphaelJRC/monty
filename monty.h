@@ -57,6 +57,7 @@ int sub(stack_t **stack, unsigned int line_no);
 int divi(stack_t **stack, unsigned int line_no);
 int mul(stack_t **stack, unsigned int line_no);
 int mod(stack_t **stack, unsigned int line_no);
+int pchar(stack_t **stack, unsigned int line_no);
 
 
 /* helper functions */
