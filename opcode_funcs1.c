@@ -107,3 +107,33 @@ int pop(stack_t **stack, unsigned int line_no)
 
 	return (EXIT_SUCCESS);
 }
+
+
+/**
+ * swap - Swaps the top two elements of a staack_t linked list.
+ * @stack: A pointer to the top node of the list.
+ * @line_no: The current line number
+ *
+ * Return: EXIT_SUCCESS on success.
+ */
+int swap(stack_t **stack, unsigned int line_no)
+{
+	stack_t *tmp;
+
+	if (*stack == NULL || (*stack)->next->next == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_no);
+		exit(EXIT_FAILURE);
+	}
+
+	tmp = (*stack)->next->next;
+	(*stack)->next->next = tmp->next;
+	(*stack)->next->prev = tmp;
+	if (tmp->next)
+		tmp->next->prev = (*stack)->next;
+	tmp->next = (*stack)->next;
+	tmp->prev = *stack;
+	(*stack)->next = tmp;
+
+	return (EXIT_SUCCESS);
+}

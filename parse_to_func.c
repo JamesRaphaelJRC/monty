@@ -18,6 +18,7 @@ int parse_to_func(stack_t **stack, unsigned int line_no)
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
+		{"swap", swap},
 		{NULL, NULL}
 	};
 

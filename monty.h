@@ -50,6 +50,8 @@ int push(stack_t **stack, unsigned int line_number);
 int pall(stack_t **stack, unsigned int line_number);
 int pint(stack_t **stack, unsigned int line_no);
 int pop(stack_t **stack, unsigned int line_no);
+int swap(stack_t **stack, unsigned int line_no);
+
 
 
 /* helper functions */
