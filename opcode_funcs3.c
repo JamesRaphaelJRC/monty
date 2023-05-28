@@ -75,28 +75,17 @@ int pchar(stack_t **stack, unsigned int line_no)
  */
 int pstr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
+	stack_t *tmp = (*stack)->next;
 
-	if ((*stack)->next == NULL)
+	while (tmp && tmp->n != 0 && (tmp->n > 0 && tmp->n <= 127))
 	{
-		printf("\n");
-		return (EXIT_FAILURE);
+		printf("%c", tmp->n);
+		tmp = tmp->next;
 	}
 
-	else
-	{
-		temp = (*stack)->next;
-
-		while (temp)
-		{
-			if (temp->n <= 0 || temp->n > 127)
-				break;
-
-			printf("%c", temp->n);
-			temp = temp->next;
-		}
-	}
 	printf("\n");
+
 	(void)line_number;
+
 	return (EXIT_SUCCESS);
 }
