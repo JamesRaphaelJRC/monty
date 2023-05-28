@@ -78,7 +78,10 @@ int pstr(stack_t **stack, unsigned int line_number)
 	stack_t *temp;
 
 	if ((*stack)->next == NULL)
+	{
+		printf("\n");
 		exit(EXIT_FAILURE);
+	}
 
 	temp = (*stack)->next;
 
