@@ -39,7 +39,10 @@ int main(int ac, char *av[])
 		line_no++;
 		line[0] = strtok(buffer, DELIM);
 		if (line[0] == NULL || line[0][0] == '#')
+		{
+			line[0] = NULL;
 			continue;
+		}
 		line[1] = strtok(NULL, DELIM);
 		exit_code = parse_to_func(&stack, line_no);
 	}
