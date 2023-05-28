@@ -3,6 +3,7 @@
 
 
 int add(stack_t **stack, unsigned int line_no);
+int nop(stack_t **stack, unsigned int line_no);
 
 
 /**
@@ -26,4 +27,20 @@ int add(stack_t **stack, unsigned int line_no)
 	status = pop(stack, line_no);
 
 	return (status);
+}
+
+
+/**
+ * nop - Does not do anything.
+ * @stack: A pointer to the top element of the stack.
+ * @line_no: The current line number.
+ *
+ * Return: EXIT_SUCCESS on success.
+ */
+int nop(stack_t **stack, unsigned int line_no)
+{
+	(void)*stack;
+	(void)line_no;
+
+	return (EXIT_SUCCESS);
 }

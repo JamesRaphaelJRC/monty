@@ -20,6 +20,7 @@ int parse_to_func(stack_t **stack, unsigned int line_no)
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
