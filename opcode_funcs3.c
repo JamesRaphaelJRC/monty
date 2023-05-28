@@ -4,6 +4,7 @@
 int mod(stack_t **stack, unsigned int line_no);
 int pchar(stack_t **stack, unsigned int line_no);
 int pstr(stack_t **stack, unsigned int line_no);
+int rotl(stack_t **stack, unsigned int line_no);
 
 
 /**
@@ -84,6 +85,38 @@ int pstr(stack_t **stack, unsigned int line_number)
 	}
 
 	printf("\n");
+
+	(void)line_number;
+
+	return (EXIT_SUCCESS);
+}
+
+
+/**
+ * rotl - Rotates stack to the top. The top element becomes the last one and
+ *		the second top element becomes the first one
+ * @stack: A pointer to the top mode node of a stack_t linked list.
+ * @line_number: The current working line number of a Monty bytecodes file.
+ *
+ * Return: EXIT_SUCCESS on success, EXIT_FAILURE otherwise
+ */
+int rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *last, *tmp;
+
+	if ((*stack)->next == NULL || (*stack)->next->next == NULL)
+		exit(EXIT_FAILURE);
+
+	last = tmp = (*stack)->next;
+
+	while (last->next != NULL)
+		last = last->next;
+
+	tmp->next->prev = *stack;
+	(*stack)->next = tmp->next;
+	last->next = tmp;
+	tmp->next = NULL;
+	tmp->prev = last;
 
 	(void)line_number;
 
