@@ -57,3 +57,4 @@ void check_file_PATH(char *path)
 		exit(EXIT_FAILURE);
 	}
 }
+

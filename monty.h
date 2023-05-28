@@ -54,6 +54,8 @@ int swap(stack_t **stack, unsigned int line_no);
 int add(stack_t **stack, unsigned int line_no);
 int nop(stack_t **stack, unsigned int line_no);
 int sub(stack_t **stack, unsigned int line_no);
+int divi(stack_t **stack, unsigned int line_no);
+int mul(stack_t **stack, unsigned int line_no);
 
 
 /* helper functions */
@@ -61,7 +63,6 @@ int parse_to_func(stack_t **stack, unsigned int line_no);
 void init_stack(stack_t **stack);
 void free_stack(stack_t *stack);
 void check_file_PATH(char *path);
-
 
 
 #endif /* __MONTY_H__ */

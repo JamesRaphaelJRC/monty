@@ -1,7 +1,11 @@
 #include "monty.h"
+#include <ctype.h>
 
 int push(stack_t **stack, unsigned int line_number);
 int pall(stack_t **stack, unsigned int line_number);
+int pint(stack_t **stack, unsigned int line_number);
+int pop(stack_t **stack, unsigned int line_no);
+int swap(stack_t **stack, unsigned int line_no);
 
 
 /**
@@ -13,7 +17,9 @@ int pall(stack_t **stack, unsigned int line_number);
  */
 int push(stack_t **stack, unsigned int line_number)
 {
+	int i;
 	stack_t *tmp, *newnode;
+	char *str;
 
 	newnode = malloc(sizeof(stack_t));
 	if (newnode == NULL)
@@ -22,10 +28,20 @@ int push(stack_t **stack, unsigned int line_number)
 		return (EXIT_FAILURE);
 	}
 
-	if (line[1] == NULL || (atoi(line[1]) == 0))
+	if (line[1] == NULL) 
 	{
 		fprintf(stdout, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
+	}
+	str = line[1];
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (!isdigit(str[i]) && str[i] != '-' && str[i] != '+')
+		{
+			fprintf(stdout, "L%u: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
 	}
 
 	newnode->n = atoi(line[1]);
