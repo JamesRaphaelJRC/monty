@@ -135,5 +135,5 @@ int swap(stack_t **stack, unsigned int line_no)
 	tmp->prev = *stack;
 	(*stack)->next = tmp;
 
-	return (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
