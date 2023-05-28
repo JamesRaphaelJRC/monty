@@ -80,18 +80,21 @@ int pstr(stack_t **stack, unsigned int line_number)
 	if ((*stack)->next == NULL)
 	{
 		printf("\n");
-		exit(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	}
 
-	temp = (*stack)->next;
-
-	while (temp)
+	else
 	{
-		if (temp->n <= 0 || temp->n > 127)
-			break;
+		temp = (*stack)->next;
 
-		printf("%c", temp->n);
-		temp = temp->next;
+		while (temp)
+		{
+			if (temp->n <= 0 || temp->n > 127)
+				break;
+
+			printf("%c", temp->n);
+			temp = temp->next;
+		}
 	}
 	printf("\n");
 	(void)line_number;
